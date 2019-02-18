@@ -9,6 +9,6 @@
 Execució:
 ```
 docker netweork create mynet
-docker run --name khost -h khost --net mynet -d edtasixm11/k18:kserver
+docker run --rm --name khost -h khost --net mynet -it edtasixm11/k18:kserver
 ```
 
