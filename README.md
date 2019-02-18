@@ -13,6 +13,6 @@ Execució:
 ```
 docker netweork create mynet
 docker run --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k18:kserver
-docker run --name kserver.edt.org -h kserver.edt.org --net mynet -it edtasixm11/k18:khost
+docker run --name khost -h khost --net mynet -it edtasixm11/k18:khost
 ```
 
