@@ -1,8 +1,8 @@
 FROM fedora:27
+RUN dnf -y install krb5-workstation 
 RUN mkdir /opt/docker
-RUN dnf -y install krb5-workstation
 COPY * /opt/docker/
-RUN cp /opt/docker/krb5.conf /etc/krb5.conf
+RUN chmod +x /opt/docker/startup.sh /opt/docker/install.sh
 WORKDIR /opt/docker
-CMD ["/bin/bash"]
+CMD [ "/opt/docker/startup.sh" ]
 
