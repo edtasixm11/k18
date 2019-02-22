@@ -62,3 +62,38 @@ Removing kserver.edt.org ... done
 Removing network k18-compose_mynet
 ```
 
+## Exemples
+
+### docker-compose.a.yml
+
+Aquest exemple bàsic genera una app amb dos serveis, *kserver* i *sshd* que comparteixen una
+xarxa *mynet*.
+
+### docker-compose.b.yml
+
+En aquest exemple s'amplia la app amb un nou servei, el *prtainer*, que permet l'administració
+remota de docker. podeu connectar amb el navegador al port local 9000 i un cop establer un nou
+password de 8 caràcters podeu observer que tenim tres containers i una xarxa.
+
+
+## docker-compose.c.yml
+
+En aquest exemple la app consisteix en els serveis *kserver*, *sshd* i *portainer*, però la 
+novetat és que el servei *kserver* utilitza un **volume**. Les dades de kerberos es desen 
+en un named-volume anomenat *krb5data** que es munta a */var/kerberos*.
+
+Això significa que la base de dades és perdurable, permanent. Els canvis que es fan es desen 
+realment al sistema de fitxers del host en un -named-volume de docker. Podem llistar i gestionar
+els volums amb l'ordre *docker volume*.
+
+Així per exemple en una execució de la app esborrem *user03* i creem un nou principal *new* 
+(ho podem fer des del sshd amb l'administrador pau). Finalitzem la app i l'engegem de nou,
+observeu que no hi ha l'usuari *user03* i si hi ha l'usuari *new*
+
+Podem llistar el volum generat:
+```
+docker volume ls
+DRIVER              VOLUME NAME
+local               k18-compose_krb5data
+```
+
