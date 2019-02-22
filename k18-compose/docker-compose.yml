@@ -3,11 +3,13 @@ services:
   kserver:
     image: edtasixm11/k18:kserver
     container_name: kserver.edt.org
+    hostname: kserver.edt.org
     networks:
       - mynet
   sshd:
     image: edtasixm11/k18:sshd
     container_name: sshd.edt.org
+    hostname: sshd.edt.org
     networks:
       - mynet        
 networks:
