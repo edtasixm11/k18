@@ -24,5 +24,3 @@ services:
       - mynet
 networks:
   mynet:
-volumes:
-  krb5data:

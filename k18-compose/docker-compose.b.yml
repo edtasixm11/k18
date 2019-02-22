@@ -4,8 +4,6 @@ services:
     image: edtasixm11/k18:kserver
     container_name: kserver.edt.org
     hostname: kserver.edt.org
-    volumes:
-      - "krb5data:/var/kerberos"
     networks:
       - mynet
   sshd:
@@ -24,5 +22,3 @@ services:
       - mynet
 networks:
   mynet:
-volumes:
-  krb5data:

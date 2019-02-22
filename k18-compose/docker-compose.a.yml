@@ -4,8 +4,6 @@ services:
     image: edtasixm11/k18:kserver
     container_name: kserver.edt.org
     hostname: kserver.edt.org
-    volumes:
-      - "krb5data:/var/kerberos"
     networks:
       - mynet
   sshd:
@@ -14,15 +12,5 @@ services:
     hostname: sshd.edt.org
     networks:
       - mynet        
-  portainer:
-    image: portainer/portainer
-    ports:
-      - "9000:9000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    networks:
-      - mynet
 networks:
   mynet:
-volumes:
-  krb5data:
