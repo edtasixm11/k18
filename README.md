@@ -9,10 +9,16 @@
   kinit, klist i kdestroy (no pam). El servidor al que contacta s'ha 
   de dir *kserver.edt.org*.
 
+**edtasixm11/k18:sshd** Servidor SSHD *kerberitzat*. Servidor ssh que permet 
+  l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El 
+  servidor s'ha de dir sshd.edt.org.
+
+
 Execució:
 ```
 docker netweork create mynet
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k18:kserver
+docker run --rm --name sshd.edt.org    -h sshd.edt.org    --net mynet -d edtasixm11/k18:sshd
 docker run --rm --name khost -h khost --net mynet -it edtasixm11/k18:khost
 ```
 
