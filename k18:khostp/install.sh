@@ -13,4 +13,4 @@ echo "local02" | passwd --stdin local02
 echo "local03" | passwd --stdin local03
 
 cp /opt/docker/krb5.conf /etc/krb5.conf
-cp /opt/docker/syste-auth /etc/pam.d/system-auth
+cp /opt/docker/system-auth /etc/pam.d/system-auth

@@ -12,7 +12,8 @@ per generar autenticació PAM kerberos simplement cal:
 
 Execució:
 ```
-docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -s edtasixm11/k18:khostp
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k18:kserver
+docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k18:khostp
 ```
 
 ```
