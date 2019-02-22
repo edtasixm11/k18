@@ -23,7 +23,7 @@ docker run --rm --name khost -h khost --net mynet -it edtasixm11/k18:khost
 ```
 
 
-### Teoria:
+### Teoria
 
 **Autenticaction Provider AP**
 
