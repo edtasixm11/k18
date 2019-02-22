@@ -37,7 +37,6 @@ ssh user01@localhost     (NO!)
 ```
 La primera d'elles peermetrà l'accés kerberitzat, la segona no.
 
-```
 
 Execució:
 ```
