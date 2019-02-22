@@ -61,7 +61,7 @@ Exemple-2
 
 Des del propi container l'usuari local01 sol·licita un ticket de user02 amb l'ordre *kinit user02*. Si s'autentica 
 correctament amb el password de kerberos obté un tiket. Seguidament l'usuari local01 realitza l'ordre *ssh user01@sshd.edt.org*
-i conectra automàticament al servidor ssh sense que se li demnai el password.
+i conecta automàticament al servidor ssh sense que se li demnai el password.
 
 Perquè? perquè està jà en possesió d'un ticket kerberos vàlid que el servidor sshd verifica i li permet iniciar sessió
 ssh sense necessitat de demanar-li el password (similar a l'accés per clau pública).
