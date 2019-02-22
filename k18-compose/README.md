@@ -44,8 +44,8 @@ Valid starting     Expires            Service principal
 02/22/19 17:32:51  02/23/19 17:32:51  krbtgt/EDT.ORG@EDT.ORG
 
 [local01@30816d659855 ~]$ ssh user02@sshd.edt.org
-user02@sshd.edt.org's password: kuser02               !!!no!!!
 Last login: Fri Feb 22 17:32:08 2019 from 172.20.0.3
+user01@sshd ~]$
 ```
 
 ```
