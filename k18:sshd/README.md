@@ -67,4 +67,47 @@ Perquè? perquè està jà en possesió d'un ticket kerberos vàlid que el servi
 ssh sense necessitat de demanar-li el password (similar a l'accés per clau pública).
 
 
+```
+# ssh user01@172.21.0.3
+The authenticity of host '172.21.0.3 (172.21.0.3)' can't be established.
+ECDSA key fingerprint is SHA256:FakX5h5J4mbjss2v3b4F4vqPllFn+AWXLj7f8ivdeAs.
+ECDSA key fingerprint is MD5:bb:50:c9:26:1b:16:df:5c:91:b3:5a:b3:7d:69:82:7a.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.21.0.3' (ECDSA) to the list of known hosts.
+user01@172.21.0.3's password: kuser01
+Last failed login: Fri Feb 22 16:49:32 UTC 2019 from 172.21.0.1 on ssh:notty
 
+[user01@sshd ~]$ klist
+Ticket cache: FILE:/tmp/krb5cc_1003_h55yoBfeGG
+Default principal: user01@EDT.ORG
+Valid starting     Expires            Service principal
+02/22/19 16:49:35  02/23/19 16:49:35  krbtgt/EDT.ORG@EDT.ORG
+
+[user01@sshd ~]$ ssh user01@sshd.edt.org
+The authenticity of host 'sshd.edt.org (172.21.0.3)' can't be established.
+ECDSA key fingerprint is SHA256:FakX5h5J4mbjss2v3b4F4vqPllFn+AWXLj7f8ivdeAs.
+ECDSA key fingerprint is MD5:bb:50:c9:26:1b:16:df:5c:91:b3:5a:b3:7d:69:82:7a.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'sshd.edt.org,172.21.0.3' (ECDSA) to the list of known hosts.
+Last login: Fri Feb 22 16:49:35 2019 from 172.21.0.1
+
+[user01@sshd ~]$ klist
+klist: No credentials cache found (filename: /tmp/krb5cc_1003)
+
+[user01@sshd ~]$ exit
+logout
+Connection to sshd.edt.org closed.
+
+[user01@sshd ~]$ klist 
+Ticket cache: FILE:/tmp/krb5cc_1003_h55yoBfeGG
+Default principal: user01@EDT.ORG
+Valid starting     Expires            Service principal
+02/22/19 16:49:35  02/23/19 16:49:35  krbtgt/EDT.ORG@EDT.ORG
+02/22/19 16:49:56  02/23/19 16:49:35  host/sshd.edt.org@EDT.ORG
+
+[user01@sshd ~]$ ssh user01@sshd.edt.org
+Last login: Fri Feb 22 16:49:56 2019 from 172.21.0.3
+```
+
+Observeu com en la sessió actual de user01 a més a més del seu ticket té el ticket 
+del servidor sshd, que li permet iniciar sessió ssh de manera desatesa.
