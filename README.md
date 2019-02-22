@@ -13,13 +13,18 @@
   l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El 
   servidor s'ha de dir sshd.edt.org.
 
+**edtasixm11/k18:khostp** host amb PAM de  kerberos. El servidor al que contacta s'ha
+  de dir *kserver.edt.org*. Aquest host configura el *system-auth* de pam per usar el
+  mòdul *pam_krb5.so*.
+
 
 Execució:
 ```
 docker netweork create mynet
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k18:kserver
 docker run --rm --name sshd.edt.org    -h sshd.edt.org    --net mynet -d edtasixm11/k18:sshd
-docker run --rm --name khost -h khost --net mynet -it edtasixm11/k18:khost
+#docker run --rm --name khost -h khost --net mynet -it edtasixm11/k18:khost
+docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k18:khostp
 ```
 
 
