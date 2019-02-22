@@ -44,3 +44,28 @@ Execució:
 docker run --rm --name sshd.edt.org    -h sshd.edt.org    --net mynet -d edtasixm11/k18:sshd
 ```
 
+### Accés kerberitzat / Accés normal
+
+Feu atenció al significat d'accés kerberitzat! Si l'usuari user01 és un usuari vàlid en el host sshd.edt.org
+(provingi el seu information privider de /etc/passwd o de ldap) i la seva autenticació és kerberos (el seu 
+password està desat al kerberos), en un accés kerberitzat, si l'usuari ja disposa de ticket podrà accedir
+al serveidor sshd sense cap password. **atenció** usualment quan això no va és causat per el keytab, no s'ha exportat
+bé, no s'ha creat bé, o no coincideixen els noms assignats al host.
+
+Exemple-1
+
+Des del propi container l'usuari local01, sense estar en posessió de cap ticket, realitza l'ordre *ssh user01@sshd.edt.org*,
+el servidor li demanarà el password, en tractar-se d'un usuari de *AP* kerberos, verificarà l'autebnticació contra el
+servidor kerberos (el *IP* l'ha obtingut de /etc/passwd).
+
+Exemple-2
+
+Des del propi container l'usuari local01 sol·licita un ticket de user02 amb l'ordre *kinit user02*. Si s'autentica 
+correctament amb el password de kerberos obté un tiket. Seguidament l'usuari local01 realitza l'ordre *ssh user01@sshd.edt.org*
+i conectra automàticament al servidor ssh sense que se li demnai el password.
+
+Perquè? perquè està jà en possesió d'un ticket kerberos vàlid que el servidor sshd verifica i li permet iniciar sessió
+ssh sense necessitat de demanar-li el password (similar a l'accés per clau pública).
+
+
+
