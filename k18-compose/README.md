@@ -1,7 +1,9 @@
 # Kerberos
 ## @edt ASIX M11-SAD Curs 2018-2019
 
-**docker-compose.yml** Engegar com a app els dos serveis conjuntament (kserver i sshd) en una xarxa mynet.
+**docker-compose.yml**   Engegar com a app els dos serveis conjuntament (kserver i sshd) en una xarxa mynet. Cal
+definir apropiadament l'atribut *hostname* per tal de que els containers es trobin.
+
  
 ```
 docker-compose up -d
@@ -15,7 +17,10 @@ CONTAINER ID        IMAGE                    COMMAND                  CREATED   
 4c3f22d1ed94        edtasixm11/k18:kserver   "/opt/docker/start..."   31 seconds ago      Up 26 seconds                           kserver.edt.org
 
 docker network inspect k18-compose_mynet
+```
 
+
+```
 ssh local01@172.20.0.3
 The authenticity of host '172.20.0.3 (172.20.0.3)' can't be established.
 ECDSA key fingerprint is SHA256:miEs80cILd2vxmX5p78ImeI7d+tq1xx7qUxjHNHTCN4.
