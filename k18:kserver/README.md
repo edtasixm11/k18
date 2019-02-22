@@ -15,3 +15,7 @@ Les característiques principals són:
  * es crea un principal de host corresponent al servidor host/sshd.edt.org.
  * tot el procés és autometitzat i el servidor s'executa detach.
 
+Execució:
+```
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -s edtasixm11/k18:kserver
+```
