@@ -109,4 +109,49 @@ les dades són compatibles entre rèpliques a un mateix host de desplegament.
 Aturar l'stack i tornar-lo a engegar i verificar la parmanència de les dades.
 
 
+```
+$ docker stack deploy -c docker-compose.yml  pr
 
+$ docker stack ls
+NAME                SERVICES
+pr                  2
+
+$docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE                    PORTS
+95c5c9vxbc80        pr_kserver          replicated          3/3                 edtasixm11/k18:kserver   
+j3aiwlhg1umy        pr_sshd             replicated          1/1                 edtasixm11/k18:sshd      
+
+docker stack ps pr
+ID                  NAME                IMAGE                    NODE                                         DESIRED STATE       CURRENT STATE           ERROR               PORTS
+q03lc9co0g5m        pr_sshd.1           edtasixm11/k18:sshd      ip-172-31-20-75.eu-west-2.compute.internal   Running             Running 8 minutes ago                       
+kni0nntja1k4        pr_kserver.1        edtasixm11/k18:kserver   ip-172-31-20-75.eu-west-2.compute.internal   Running             Running 8 minutes ago                       
+nffoes604y8w        pr_kserver.2        edtasixm11/k18:kserver   ip-172-31-20-75.eu-west-2.compute.internal   Running             Running 8 minutes ago                       
+n64sq2qkyu0y        pr_kserver.3        edtasixm11/k18:kserver   ip-172-31-20-75.eu-west-2.compute.internal   Running             Running 8 minutes ago                       
+
+$ docker ps       
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS               NAMES
+bbd8381d6918        edtasixm11/k18:sshd      "/opt/docker/startup…"   6 minutes ago       Up 6 minutes                            pr_sshd.1.q03lc9co0g5m4vezagi6hve0g
+94dc82fb73d0        edtasixm11/k18:kserver   "/opt/docker/startup…"   6 minutes ago       Up 6 minutes                            pr_kserver.1.kni0nntja1k4jgb27t7q6m2pg
+d71db1cf8ed2        edtasixm11/k18:kserver   "/opt/docker/startup…"   6 minutes ago       Up 6 minutes                            pr_kserver.3.n64sq2qkyu0y7ie8bzu4cfuyr
+8cb77d478f7e        edtasixm11/k18:kserver   "/opt/docker/startup…"   6 minutes ago       Up 6 minutes                            pr_kserver.2.nffoes604y8w7tl96xww9ekul
+
+$ docker volume ls
+DRIVER              VOLUME NAME
+local               pr_krb5data
+local               pr_ldapdata
+
+docker stack rm pr
+Removing service pr_kserver
+Removing service pr_sshd
+Removing network pr_mynet
+```
+
+Dins un dels containers:
+```
+$ mount  -t ext4
+/dev/xvda1 on /var/kerberos type ext4 (rw,relatime,seclabel,data=ordered)
+/dev/xvda1 on /etc/resolv.conf type ext4 (rw,relatime,seclabel,data=ordered)
+/dev/xvda1 on /etc/hostname type ext4 (rw,relatime,seclabel,data=ordered)
+/dev/xvda1 on /etc/hosts type ext4 (rw,relatime,seclabel,data=ordered)
+
+```
