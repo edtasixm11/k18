@@ -155,3 +155,48 @@ $ mount  -t ext4
 /dev/xvda1 on /etc/hosts type ext4 (rw,relatime,seclabel,data=ordered)
 
 ```
+
+### docker-compose.d.yml  (bis)
+
+Desplegar en un swarm format per tres màquines AMI de AWS EC2.
+En fer el deploy segurament les tres rèpliques de kserver es repertiran en els tres nodes.
+
+```
+$ docker stack deploy -c docker-compose.yml  pr
+
+$ docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS               NAMES
+8ddd70f07489        edtasixm11/k18:sshd      "/opt/docker/startup…"   2 minutes ago       Up About a minute                       pr_sshd.1.oy78w32rc9vni79asg2tz1wi1
+60a219b3ab78        edtasixm11/k18:kserver   "/opt/docker/startup…"   2 minutes ago       Up 2 minutes                            pr_kserver.2.urx8u97jwxicaoqtc1uy2eskh
+
+$ docker stack ps pr
+ID                  NAME                IMAGE                    NODE                                         DESIRED STATE       CURRENT STATE           ERROR               PORTS
+oy78w32rc9vn        pr_sshd.1           edtasixm11/k18:sshd      ip-172-31-20-75.eu-west-2.compute.internal   Running             Running 2 minutes ago                       
+tmh4opomkp8r        pr_kserver.1        edtasixm11/k18:kserver   ip-172-31-30-30.eu-west-2.compute.internal   Running             Running 2 minutes ago                       
+urx8u97jwxic        pr_kserver.2        edtasixm11/k18:kserver   ip-172-31-20-75.eu-west-2.compute.internal   Running             Running 2 minutes ago                       
+jcp3al2i9pwp        pr_kserver.3        edtasixm11/k18:kserver   ip-172-31-31-57.eu-west-2.compute.internal   Running             Running 2 minutes ago                       
+
+$ docker stack ls
+NAME                SERVICES
+pr                  2
+
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE                    PORTS
+vlozlf5yds0d        pr_kserver          replicated          3/3                 edtasixm11/k18:kserver   
+zg0yndejsuws        pr_sshd             replicated          1/1                 edtasixm11/k18:sshd  
+```
+
+A cada host hi ha el volum krb5_data
+```
+$ docker volume ls
+DRIVER              VOLUME NAME
+local               pr_krb5data
+```
+Si anem accedint individualmentr a cada k server observer que el del manager té els usuaris que hem estat
+creant (new1, etc). Ha reutilitzat el volum que hi havia en el host. En canvi els altres dos nodes workers 
+no tenien volum i l'ha creat de now, en blanc hi ha fet el populate que mana la imatge (els principals habituals).
+Qualsevol canvi que fem és local al volume del node.
+En conclusió, el disc NO es comparteix!
+
+
+
