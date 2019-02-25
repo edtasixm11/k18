@@ -97,3 +97,16 @@ DRIVER              VOLUME NAME
 local               k18-compose_krb5data
 ```
 
+#### docker-compose.d.yml
+
+Desplegar a AWS EC2 usant UNA màquina AMI aquest fitxer "version 3" amb docker stack, que
+fa tres rèpliques del servidor i utilitza un volum krb5data.
+
+Connectar manualment a cada ràplica: crear principals new1, new2 i new3 en la primera,
+esborrant new3 i creant new4 en la segona i esborrant new2 i creant new5 en la tercera. Observar que
+les dades són compatibles entre rèpliques a un mateix host de desplegament.
+
+Aturar l'stack i tornar-lo a engegar i verificar la parmanència de les dades.
+
+
+
