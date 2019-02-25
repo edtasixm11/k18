@@ -2,23 +2,20 @@ version: "3"
 services:
   kserver:
     image: edtasixm11/k18:kserver
+    container_name: kserver.edt.org
     hostname: kserver.edt.org
     deploy: 
       replicas: 3
     volumes:
-      - "kdata:krb5data:/var/kerberos"
+      - "krb5data:/var/kerberos"
     networks:
       - mynet
   sshd:
     image: edtasixm11/k18:sshd
+    container_name: sshd.edt.org
     hostname: sshd.edt.org
     networks:
       - mynet        
-  kdata:
-    image: fedora:27
-    hostname: krb5data.edt.org
-    volumes:
-    - krb5data:/opt/krb5data
 networks:
   mynet:
 volumes:
