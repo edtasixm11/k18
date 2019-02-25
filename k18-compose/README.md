@@ -76,7 +76,7 @@ remota de docker. podeu connectar amb el navegador al port local 9000 i un cop e
 password de 8 caràcters podeu observer que tenim tres containers i una xarxa.
 
 
-## docker-compose.c.yml
+### docker-compose.c.yml
 
 En aquest exemple la app consisteix en els serveis *kserver*, *sshd* i *portainer*, però la 
 novetat és que el servei *kserver* utilitza un **volume**. Les dades de kerberos es desen 
