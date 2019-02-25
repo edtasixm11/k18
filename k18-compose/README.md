@@ -199,4 +199,9 @@ Qualsevol canvi que fem és local al volume del node.
 En conclusió, el disc NO es comparteix!
 
 
+Cal estudiar solucions de:
+ - DRDB
+ - GlusterFS
+ - NFS
+ - Amazon S3
 
