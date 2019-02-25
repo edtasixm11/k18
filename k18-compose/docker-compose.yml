@@ -6,7 +6,7 @@ services:
     deploy: 
       replicas: 3
     volumes:
-      - "kdata:krb5data:/var/kerberos"
+      - "krb5data:/var/kerberos"
     networks:
       - mynet
   sshd:
@@ -14,12 +14,11 @@ services:
     hostname: sshd.edt.org
     networks:
       - mynet        
-  kdata:
-    image: fedora:27
-    hostname: krb5data.edt.org
-    volumes:
-    - krb5data:/opt/krb5data
 networks:
   mynet:
 volumes:
   krb5data:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.40.0.199,nolock,soft,rw"
+      device: ":/opt/kdata"
