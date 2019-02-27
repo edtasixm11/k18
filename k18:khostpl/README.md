@@ -7,8 +7,21 @@
   
 per generar autenticació PAM amb kerberos i ldap cal:
 
- * instal·lar pam_krb5, openldap-client i authconfig
- * configurar /etc/pam.d/system-auth per fer ús del mòdul pam_krb5.so
+Part Global:
+  * instal·lar procs passwd.
+  * crear els usuaris i assignar password als locals.
+
+Part Ldap:
+ * instal·lar openldap-clients nss-pam-ldapd authconfig
+ * copiar la configuració client /etc/openldap/ldap.conf.
+ * copiar la configuració client /etc/nslcd.
+ * copiar la configuració ns /etc/nsswitch.conf.
+ * activar el servei nslcd
+ * activar el servei nscd
+
+Part Kerberos
+ * instal·lar pam_krb5 authconfig
+ * copiar /etc/krb5.conf per la configuració client kerberos
 
 Execució:
 ```
