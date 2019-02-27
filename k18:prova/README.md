@@ -31,7 +31,13 @@ docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasix
 docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k18:khostpl
 ```
 
+####Test:
+
+Verificar ldap:
 ```
-xx
-xx
+ldapsearch -x -LLL dn
+getent passwd pere
+getent passwd
+
+
 ```
