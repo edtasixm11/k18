@@ -17,14 +17,26 @@
   de dir *kserver.edt.org*. Aquest host configura el *system-auth* de pam per usar el
   mòdul *pam_krb5.so*.
 
+**edtasixm11/k18:khostpl** host amb PAM amb autenticació AP de  kerberos i IP de ldap.
+  El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
+  s'anomena ldap.edt.org. Aquest host es configura amb authconfig .
 
-Execució:
+#### Execució
+
+Execució bàsica:
 ```
 docker netweork create mynet
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k18:kserver
 docker run --rm --name sshd.edt.org    -h sshd.edt.org    --net mynet -d edtasixm11/k18:sshd
-#docker run --rm --name khost -h khost --net mynet -it edtasixm11/k18:khost
 docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k18:khostp
+```
+
+Execució krb5+ldap:
+```
+docker netweork create mynet
+docker run --rm --name ldap.edt.org -h ldap.edt.org --net mynet -d edtasixm06/ldapserver:18group
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k18:kserver
+docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k18:khostpl
 ```
 
 
