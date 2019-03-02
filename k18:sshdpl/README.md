@@ -28,12 +28,3 @@ al verificar que externament es pot accedir al servei ssh en els casos:
   * user01 amb accés kerberitzat (ja disposant del ticket, accés automàtic)
   * pere  amb accés kerberitzat (ja disposant del ticket, accés automàtic)
 
-```
-$ su - local01
-
-[local01@host ~]$ su - user03
-Password:  kuser03
-
-[user03@host ~]$ id
-uid=1005(user03) gid=100(users) groups=100(users),1001(kusers)
-```
