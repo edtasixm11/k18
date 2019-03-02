@@ -11,7 +11,7 @@ services:
     networks:
       - mynet
   sshd:
-    image: edtasixm11/k18:sshd
+    image: edtasixm11/k18:sshdpl
     container_name: sshd.edt.org
     hostname: sshd.edt.org
     ports: 
@@ -24,6 +24,12 @@ services:
     hostname: ldap.edt.org
     ports: 
       - "389:389"
+    networks:
+      - mynet
+  khost:
+    image: edtasixm11/k18:khostpl
+    container_name: khost.edt.org 
+    hostname: khost.edt.org
     networks:
       - mynet
 networks:
