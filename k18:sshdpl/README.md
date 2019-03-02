@@ -52,7 +52,7 @@ services:
       - mynet        
   ldap:
     image: edtasixm06/ldapserver:18group
-    container_name: ldapserver.edt.org
+    container_name: ldap.edt.org
     hostname: ldap.edt.org
     ports: 
       - "389:389"
