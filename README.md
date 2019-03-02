@@ -17,15 +17,18 @@
   de dir *kserver.edt.org*. Aquest host configura el *system-auth* de pam per usar el
   mòdul *pam_krb5.so*.
 
-**edtasixm11/k18:khostpl** host amb PAM amb autenticació AP de  kerberos i IP de ldap.
+**edtasixm11/k18:khostpl** (khost-pam-ldap) host amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig .
 
-**edtasixm11/k18:sshdpl** Servidor SSH  amb PAM amb autenticació AP de  kerberos i IP de ldap.
+**edtasixm11/k18:sshdpl** (sshd-pam-kerberos-ldap) Servidor SSH  amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig . 
   S'ha generat partint del host edtasixm11/k18:khostpl i dse li ha afegit la part del servidor sshd.
   Conté els fitxers per poder activar el mount del home samba, però no s'ha configurat.
+
+**edtasixm11/k18:sshdpls** (sshd-pam-kerberos-ldap-home-samba) Servidor SSH  amb PAM (kerberos+ldap)
+  que munta els homes dels usuaris (dins del home) via samba.
 
 
 #### Execució
