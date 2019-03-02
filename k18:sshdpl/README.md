@@ -20,7 +20,13 @@ docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11
 
 Test:
 
+al verificar que externament es pot accedir al servei ssh en els casos:
 
+  * local01 (usuari local)
+  * user01 (usuari compte local passwd kerberos)
+  * pere (usuari ldap amb passwd kerberos)
+  * user01 amb accés kerberitzat (ja disposant del ticket, accés automàtic)
+  * pere  amb accés kerberitzat (ja disposant del ticket, accés automàtic)
 
 ```
 $ su - local01
