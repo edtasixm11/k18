@@ -30,7 +30,8 @@ cp /opt/docker/krb5.conf /etc/krb5.conf
 /usr/bin/ssh-keygen -A
 kadmin -p pau -w kpau -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org"
 
-#cp /opt/docker/system-auth-edt /etc/pam.d/system-auth-edt
+cp /opt/docker/system-auth-ac /etc/pam.d/system-auth-ac
+cp /opt/docker/password-auth-ac /etc/pam.d/password-auth-ac
 #ln -sf /etc/pam.d/system-auth-edt /etc/pam.d/system-auth
 #cp /opt/docker/system-auth /etc/pam.d/system-auth
 
