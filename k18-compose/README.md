@@ -156,7 +156,7 @@ $ mount  -t ext4
 
 ```
 
-### docker-compose.d.yml  (bis)
+#### docker-compose.d.yml  (bis)
 
 Desplegar en un swarm format per tres màquines AMI de AWS EC2.
 En fer el deploy segurament les tres rèpliques de kserver es repertiran en els tres nodes.
@@ -204,4 +204,16 @@ Cal estudiar solucions de:
  - GlusterFS
  - NFS
  - Amazon S3
+
+
+#### docker-compose.e.yml
+
+Desplegar en un host local o a AWS amb docker-compose la app amb els serveis
+kserver, sshd i ldap, tot redirigint els ports dels serveis al host. Això 
+permet al host actuar com un servidor kerberos, ssh i ldap.
+
+Des de qualsevol client correctament configurar definir al /etc/hosts la 
+adreça IP del host i els noms de domini sshd.edt.org, kserver.edt.org i ldap.edt.org.
+
+
 
