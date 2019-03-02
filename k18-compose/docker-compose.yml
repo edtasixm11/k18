@@ -26,11 +26,5 @@ services:
       - "389:389"
     networks:
       - mynet
-  khost:
-    image: edtasixm11/k18:khostpl
-    container_name: khost.edt.org 
-    hostname: khost.edt.org
-    networks:
-      - mynet
 networks:
   mynet:
