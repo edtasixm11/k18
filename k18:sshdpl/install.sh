@@ -19,6 +19,9 @@ cp /opt/docker/sshd_config /etc/ssh/sshd_config
 
 echo "session optional pam_mkhomedir.so" >> /etc/pam.d/system-auth
 bash /opt/docker/auth.sh
+# la copia de krb5.conf va despres del auth.sh per evitar el problema
+# de la línia de configuració del default cache
+cp /opt/docker/krb5.conf /etc/krb5.conf
 /usr/bin/ssh-keygen -A
 kadmin -p pau -w kpau -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org"
 
