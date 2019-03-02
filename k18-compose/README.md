@@ -97,7 +97,7 @@ DRIVER              VOLUME NAME
 local               k18-compose_krb5data
 ```
 
-#### docker-compose.d.yml
+### docker-compose.d.yml
 
 Desplegar a AWS EC2 usant UNA màquina AMI aquest fitxer "version 3" amb docker stack, que
 fa tres rèpliques del servidor i utilitza un volum krb5data.
@@ -206,7 +206,7 @@ Cal estudiar solucions de:
  - Amazon S3
 
 
-#### docker-compose.e.yml
+### docker-compose.e.yml
 
 Desplegar en un host local o a AWS amb docker-compose la app amb els serveis
 kserver, sshd i ldap, tot redirigint els ports dels serveis al host. Això 
