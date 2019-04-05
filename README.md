@@ -1,6 +1,12 @@
 # Kerberos
 ## @edt ASIX M11-SAD Curs 2018-2019
 
+Podeu trobar les imatges docker al Dockehub de [edtasixm11](https://hub.docker.com/u/edtasixm11/)
+
+Podeu trobar la documentació del mòdul a [ASIX-M11](https://sites.google.com/site/asixm11edt/)
+
+ASIX M06-ASO Escola del treball de barcelona
+
 **edtasixm11/k18:kserver** servidor kerberos detach. Crea els usuaris pere
   pau (admin), jordi, anna, marta, marta/admin i julia.
   Assignar-li el nom de host: *kserver.edt.org*
